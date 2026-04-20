@@ -1,0 +1,18 @@
+[project]
+name = "{{cookiecutter.project_slug}}"
+version = "{{cookiecutter.project_version}}"
+dependencies = [
+  "pydantic",
+]
+
+[dependency-groups]
+dev = [
+    "coverage>=7.13.5",
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-ra -v --cov --cov-report=term-missing"

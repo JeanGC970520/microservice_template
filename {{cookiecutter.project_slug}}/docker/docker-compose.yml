@@ -1,0 +1,38 @@
+services:
+  localstack:
+    container_name: localstack
+    image: localstack/localstack:latest
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=lambda,apigateway,dynamodb,s3
+      - DEBUG=1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - service_network
+
+  {{cookiecutter.project_slug}}:
+    container_name: {{cookiecutter.project_slug}}
+    depends_on:
+      - localstack
+    build: 
+      context: .
+      dockerfile: Dockerfile.local
+    ports:
+      - "8000:8000"
+    environment:
+      - AWS_REGION=us-east-1
+      - AWS_ENVIRONMENT=local
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - DYNAMO_TABLE_NAME=blog-posts
+      - ENDPOINT_URL=http://localstack:4566
+      - LOG_LEVEL=DEBUG
+    networks:
+      - service_network
+    
+networks:
+  service_network:
+    name: blog_network
+    driver: bridge

@@ -1,0 +1,28 @@
+name: CI
+
+on:
+    push:
+        branches: [ main ]
+    pull_request:
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "{{cookiecutter.python_version}}"
+
+            - name: Install uv
+              run: pip install uv
+
+            - name: Install dependencies
+              run: uv pip install -r pyproject.toml
+
+            - name: Run tests
+              run: pytest -v

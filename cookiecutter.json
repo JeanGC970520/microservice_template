@@ -1,0 +1,10 @@
+{
+    "project_name": "My Service",
+    "project_slug": "my_service",
+    "project_version": "0.1.0",
+    "python_version": "3.13",
+    "author_name": "Jean GC",
+    "author_email": "jean.gc@example.com",
+    "project_description": "A FastAPI microservice",
+    "year": "2026"
+}
