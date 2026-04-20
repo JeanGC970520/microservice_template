@@ -34,5 +34,5 @@ services:
     
 networks:
   service_network:
-    name: blog_network
+    name: service_network
     driver: bridge
