@@ -1,4 +1,4 @@
-.PHONY: help install test run up down lint format
+.PHONY: help install test run up down logs lint format
 
 help:
 	@echo "Commands:"
@@ -18,10 +18,10 @@ test:
 	uv run pytest
 
 run:
-	uv run uvicorn {{cookiecutter.project_slug}}.main:app --reload
+	uv run uvicorn order_worker.main:app --reload
 
 up:
-	docker compose -f docker/docker-compose.yml up --build
+	docker compose -f docker/docker-compose.yml up --build -d
 
 down:
 	docker compose -f docker/docker-compose.yml down
