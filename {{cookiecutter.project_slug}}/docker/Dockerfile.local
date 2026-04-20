@@ -28,10 +28,10 @@ COPY --from=builder /usr/local/lib/python{{cookiecutter.python_version}}/site-pa
 COPY --from=builder /usr/local/bin /usr/local/bin
 
 # Copiar código
-COPY ./src ./src
+COPY ../src ./src
 
 # Copiar recursos estáticos
-COPY ./resources ./resources
+COPY ../resources ./resources
 
 EXPOSE 8000
 
