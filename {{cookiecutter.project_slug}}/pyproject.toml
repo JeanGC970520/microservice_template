@@ -9,7 +9,7 @@ dependencies = [
   "pydantic",
   "pydantic-settings",
   "fastapi",
-  "uvicorn[standard],
+  "uvicorn[standard]",
 ]
 
 [dependency-groups]
