@@ -2,7 +2,7 @@ import inspect
 import logging
 import threading
 
-from src.infrastructure.config.base import config
+from src.config.base import config
 
 
 class Colors:
